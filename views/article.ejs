@@ -1,8 +1,8 @@
 <% include common/header.ejs %>
 <p>
     <% if(user && (user.username == post.username)) { %>
-    <span><a class="edit" href="/edit/<%= post.username %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
-    <span><a class="edit" href="/remove/<%= post.username %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
+    <span><a class="edit" href="/edit/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>">编辑</a></span>
+    <span><a class="edit" href="/remove/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>">删除</a></span>
     <% } %>
     <% var flag = 1 %>
     <% if (user && (user.username != post.username)) { %>
@@ -20,7 +20,7 @@
       <% flag = 0 %>
     <% } %>
     <% if (flag) { %>
-      <span><a class="edit" href="/reprint/<%= post.username %>/<%= post.time.day %>/<%= post.title %>">转载</a></span>
+      <span><a class="edit" href="/reprint/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>">转载</a></span>
     <% } %>
 </p>
 <p class="info">
@@ -33,7 +33,7 @@
       <% } %>
   <% }) %>
   <% if (post.reprint_info.reprint_from) { %>
-    <br><a href="/blog/<%= post.reprint_info.reprint_from.username %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a>
+    <br><a href="/blog/<%= post.reprint_info.reprint_from.username %>/<%= post.reprint_info.reprint_from.minute %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a>
   <% } %>
 </p>
 <p><%- post.post %></p>

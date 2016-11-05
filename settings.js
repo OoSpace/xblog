@@ -1,5 +1,5 @@
 module.exports = {
-  cookieSecret: 'kirinblog', 
+  cookieSecret: 'blog',
   db: 'myblog',
   host: 'localhost',
   port: 27017,

@@ -102,7 +102,7 @@ Post.getTen = function(username, page, callback) {
 };
 
 //获取一篇文章
-Post.getOne = function(username, day, title, callback) {
+Post.getOne = function(username, minute, title, callback) {
   //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
@@ -117,7 +117,7 @@ Post.getOne = function(username, day, title, callback) {
       //根据用户名、发表日期及文章名进行查询
       collection.findOne({
         "username": username,
-        "time.day": day,
+        "time.minute": decodeURIComponent(minute),
         "title": title
       }, function (err, doc) {
         if (err) {
@@ -128,7 +128,7 @@ Post.getOne = function(username, day, title, callback) {
         if(doc){
             collection.update({
                 "username": username,
-                "time.day": day,
+                "time.minute": decodeURIComponent(minute),
                 "title": title
             },{
                 $inc: {"pv": 1}
@@ -152,7 +152,7 @@ Post.getOne = function(username, day, title, callback) {
 };
 
 //编辑
-Post.edit = function(username, day, title, callback){
+Post.edit = function(username, minute, title, callback){
   mongodb.open(function(err, db){
     if(err){
       return callback(err);
@@ -164,7 +164,7 @@ Post.edit = function(username, day, title, callback){
       }
       collection.findOne({
         "username": username,
-        "time.day": day,
+        "time.minute": decodeURIComponent(minute),
         "title": title
       },function(err, doc){
         mongodb.close();
@@ -178,7 +178,7 @@ Post.edit = function(username, day, title, callback){
 }
 
 //更新一篇文章
-Post.update = function(username, day, title, post, callback){
+Post.update = function(username, minute, title, post, callback){
   mongodb.open(function(err,db){
     if(err){
       return callback(err);
@@ -190,7 +190,7 @@ Post.update = function(username, day, title, post, callback){
       }
       collection.update({
         "username": username,
-        "time.day": day,
+        "time.minute": decodeURIComponent(minute),
         "title":    title
       },{
         $set: {post: post}
@@ -206,7 +206,7 @@ Post.update = function(username, day, title, post, callback){
 }
 
 //删除一篇文章
-Post.remove = function(username, day, title, callback){
+Post.remove = function(username, minute, title, callback){
   mongodb.open(function(err, db){
     if(err){
       return callback(err);
@@ -218,7 +218,7 @@ Post.remove = function(username, day, title, callback){
       }
       collection.findOne({
           "username": username,
-          "time.day": day,
+          "time.minute":decodeURIComponent(minute),
           "title":    title
       }, function(err, doc){
           if(err){

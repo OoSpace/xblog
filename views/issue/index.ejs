@@ -2,7 +2,7 @@
 <% posts.forEach(function(post){  %>
 <p>
 	<h2>
-		<a href="/blog/<%= post.username %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+		<a href="/blog/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>"><%= post.title %></a>
 	</h2>
 	<a href="/blog/<%= post.username %>">
 		<img src="<%= post.head %>" class="r_head" />
