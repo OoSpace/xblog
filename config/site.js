@@ -1,11 +1,11 @@
 var siteTitle = '多人博客', //站点名称
     pageTitle = { //各页面名称
-            '/': '首页',
-            '/index': '首页',
-            '/reg': '注册',
-            '/post': '发表文章',
-            '/upload': '上传',
-            '/logout': '退出'
+            '/': 'HOME',
+            '/index': 'HOME',
+            '/reg': 'REGISTER',
+            '/post': 'WRITE',
+            '/upload': 'UPLOAD',
+            '/logout': 'LOGOUT'
     },
     basePath = 'http://www.baidu.com';  //设置页面根路径
        
