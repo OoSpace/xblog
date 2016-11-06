@@ -1,5 +1,34 @@
-</article>
+    </article>
+    </div>
+</div>
+    <div class="swiper-scrollbar"></div>
+</div>
+</body>
 <script type="text/javascript" src="/libs/jquery1.11.1.min.js"></script>
 <script type="text/javascript" src="/libs/bootstrap.min.js" ></script>
-</body>
+<script type="text/javascript" src="/libs/swiper.min.js" ></script>
+<script>
+    var MYswiper =new Swiper('.swiper-container', {
+        scrollbar: '.swiper-scrollbar',
+        wrapperClass: 'swiper-wrapper',
+        direction: 'vertical',
+        speed:500,
+        slidesPerView: 'auto',
+        freeMode: true,
+        mousewheelControl: true,
+        freeModeMomentumRatio : 1,
+        freeModeMomentumBounceRatio:0.5,
+        observer:true,
+        longSwipes:false,
+        shortSwipes:false,
+        threshold:20,
+        lazyLoading: true,
+        updateOnImagesReady : true,
+        lazyLoadingInPrevNext : true,
+        freeModeMomentumBounce: false,//禁用滑动边缘反弹
+    });
+    window.onresize=function () {
+        MYswiper.onResize();
+    }
+</script>
 </html>

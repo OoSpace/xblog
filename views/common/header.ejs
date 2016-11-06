@@ -4,7 +4,8 @@
 	<meta charset="UTF-8" />
 	<title>博客</title>
 	<link rel="stylesheet" href="/css/hd.css">
-	<link rel="stylesheet" href="/css/bootstrap.css" />
+	<!--<link rel="stylesheet" href="/css/bootstrap.css" />-->
+	<link rel="stylesheet" href="/css/swiper.min.css" />
 	<!-- <script type="text/javascript" src="/libs/angular.min.js"></script> -->
 </head>
 <body>
@@ -12,7 +13,7 @@
 	<h1><%= title %></h1>
 </header>
 <nav id="left-menu">
-	<a title="主页" href="/" <% if (title == '主页') { %> class="current"  <% } %> >HOME</a>
+	<a title="首页" href="/" <% if (title == '首页') { %> class="current"  <% } %> >HOME</a>
 	<a title="存档" href="/archive" <% if (title == '存档') { %> class="current"  <% } %>  >STORAGE</a>
 	<a title="标签" href="/tags" <% if (title == '标签') { %> class="current"  <% } %>  >TAGS</a>
 	<a title="友情链接" href="/links" <% if (title == '友情链接') { %> class="current"  <% } %>  >LINKS</a>
@@ -26,13 +27,16 @@
 	<a title="注册" href="/reg" <% if (title == '注册') { %> class="current"  <% } %> >REGIST</a>
 	<% } %>
 	<form action="/search" method="GET">
-		<input type="text" name="keyword" placeholder="SEARCH:" class="search" />
+		<input type="text" name="keyword" placeholder="SEARCH" class="search" />
 	</form>
 </nav>
-<article>
-	<% if (success) { %>
-	<div><%= success %></div>
-	<% } %>
-	<% if(error) { %>
-	<div><%= error %> </div>
-	<% } %>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<article>
+			<% if (success) { %>
+			<div><%= success %></div>
+			<% } %>
+			<% if(error) { %>
+			<div><%= error %> </div>
+			<% } %>
