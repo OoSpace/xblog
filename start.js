@@ -31,6 +31,7 @@ app.set( 'view engine', 'ejs' );
 //页面通知（即成功与错误信息的显示）的功能
 app.use(flash());
 app.use( express.static( path.join( __dirname, 'public' ))); //静态文件路径
+app.use( express.static( path.join( __dirname, 'upload' ))); //静态文件路径
 //记录错误日志
 app.use(function(err, req, res, next){
     var meta = '['+ new Date() +']' + req.url + '\n';

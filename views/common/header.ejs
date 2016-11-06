@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>多人博客</title>
+	<title>博客</title>
 	<link rel="stylesheet" href="/css/hd.css">
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<!-- <script type="text/javascript" src="/libs/angular.min.js"></script> -->
@@ -19,13 +19,14 @@
 	<% if(user) { %>
 	<a title="上传" href="/upload" <% if (title == '上传') { %> class="current"  <% } %>  >UPLOAD</a>
 	<a title="发表文章" href="/post" <% if (title == '发表文章') { %> class="current"  <% } %>  >WRITE</a>
+	<a title="媒体库" href="/vedio" <% if (title == '媒体库') { %> class="current"  <% } %>  >VEDIO</a>
 	<a title="退出" href="/logout" <% if (title == '退出') { %> class="current"  <% } %> >LOGOUT</a>
 	<% } else { %>
 	<a title="登录" href="/login" <% if (title == '登录') { %> class="current"  <% } %>  >LOGIN</a>
 	<a title="注册" href="/reg" <% if (title == '注册') { %> class="current"  <% } %> >REGIST</a>
 	<% } %>
 	<form action="/search" method="GET">
-		<input type="text" name="keyword" placeholder="输入关键字搜索:" class="search" />
+		<input type="text" name="keyword" placeholder="SEARCH:" class="search" />
 	</form>
 </nav>
 <article>

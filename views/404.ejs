@@ -3,8 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Blog</title>
+    <style>
+        body{
+            background-color:orange;
+            background-size:100% 100%;
+            overflow: hidden;
+            height:100%;
+            width:100%;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.0) 55%,
+            rgba(255, 255, 255, 0.0) 100%),
+            radial-gradient(at center center, rgba(255, 255, 255, 0.3) 0%,
+                    rgba(255, 255, 255, 0.0) 80%);
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none;  /*webkit浏览器*/
+            -ms-user-select: none;   /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+        .error{
+            width: 200px;
+            height: 80px;
+            font-size: 96px;
+            font-family: arial;
+            font-weight: bold;
+            color: #fff;
+            position: absolute;
+            /* border:1px dotted black; */
+            top: 40%;
+            left: 50%;
+            margin-top: -40px;
+            margin-left: -100px;
+            cursor: default;
+            text-shadow: 1px 2px 5px black;
+        }
+    </style>
 </head>
 <body>
-<img src="/imgs/404.jpg" />
+    <div class="error">404</div>
 </body>
 </html>

@@ -12,7 +12,8 @@ exports.dataInput = function (req, res) {
                return  console.log(err);
           } 
         //文件信息在req.file或者req.files中显示。
-          //console.log(req.files);
+        //调用方式：![Alt text](/imgs/git-1478399278436.jpg)
+          console.log(req.files);
           req.flash('success', '文件上传成功!');
   		  res.redirect('/upload');
     });

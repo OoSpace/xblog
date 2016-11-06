@@ -5,7 +5,8 @@ var siteTitle = '多人博客', //站点名称
             '/reg': 'REGISTER',
             '/post': 'WRITE',
             '/upload': 'UPLOAD',
-            '/logout': 'LOGOUT'
+            '/logout': 'LOGOUT',
+            '/vedio': 'VEDIO'
     },
     basePath = 'http://www.baidu.com';  //设置页面根路径
        

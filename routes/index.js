@@ -96,7 +96,7 @@ exports.all = function(app){
     app.get('/upload', checkLogin);
 	app.get('/upload', function(req, res) {
 	    res.render('upload', {
-	    	title: '文件上传',
+	    	title: '上传',
 	    	user: req.session.user,
 	    	success: req.flash('success').toString(),
 	    	error: req.flash('error').toString()
@@ -312,6 +312,21 @@ exports.all = function(app){
           });
         });
     });
+	app.get('/vedio', function (req, res) {
+		Post.getVedios(function (err, posts) {
+			if (err) {
+				req.flash('error', err);
+				return res.redirect('/');
+			}
+			res.render('vedio', {
+				title:   '媒体库',
+				posts:   posts,
+				user:    req.session.user,
+				success: req.flash('success').toString(),
+				error:   req.flash('error').toString()
+			});
+		});
+	});
 
     app.get('/tags/:tag', function(req, res){
         Post.getTag(req.params.tag, function(err, posts){
