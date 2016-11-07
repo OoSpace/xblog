@@ -26,7 +26,8 @@ fs.stat(destDir, (err) => {
 filename: function (req, file, cb) {
     var fileFormat = (file.originalname).split(".");
     //cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
-    cb(null, fileFormat[0] + '-' + Date.now().toString() + "." + fileFormat[fileFormat.length - 1] );
+    cb(null, fileFormat[0] + '-' + Date.now().toString() + "." + fileFormat[fileFormat.length - 1] );//使用自动添加后缀名防止覆盖
+    //cb(null, file.originalname );//使用原图名字，有可能覆盖
 }
 });
 //添加配置文件到muler对象。
