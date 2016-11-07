@@ -36,5 +36,5 @@ article a:hover{color:#333333;text-decoration:underline;}
 /*gravatar*/
 .l_head{ float:left; margin-left: -4em; box-shadow: 0 1px 4px #888; }
 .r_head{ float:right; margin-top: -2.5em; box-shadow: 0 1px 4px #888;border-radius: 100% }
-.swiper-container{height:100%;width:auto;margin: 0 auto;overflow: hidden}
-.swiper-slide{-webkit-box-sizing: border-box;box-sizing: border-box;height: auto;overflow: hidden}
+.swiper-container{height:100%;width:auto;margin: 0 auto;overflow: hidden;}
+.swiper-slide{-webkit-box-sizing: border-box;box-sizing: border-box;height: auto !important;}
