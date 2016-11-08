@@ -58,7 +58,7 @@ exports.all = function(app){
     //注册
     app.get('/reg', checkNotLogin);
 	app.get('/reg', function(req, res, next) {
-	    issue.reg(req,res);
+	    //issue.reg(req,res);
 	});
 
 	app.post('/reg', checkNotLogin);
