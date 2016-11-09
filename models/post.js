@@ -116,9 +116,9 @@ Post.getOne = function(username, minute, title, callback) {
       }
       //根据用户名、发表日期及文章名进行查询
       collection.findOne({
-        "username": username,
+        "username": decodeURIComponent(username),
         "time.minute": decodeURIComponent(minute),
-        "title": title
+        "title": decodeURIComponent(title)
       }, function (err, doc) {
         if (err) {
           mongodb.close();
@@ -127,9 +127,9 @@ Post.getOne = function(username, minute, title, callback) {
         //解析 markdown 为 html
         if(doc){
             collection.update({
-                "username": username,
+                "username": decodeURIComponent(username),
                 "time.minute": decodeURIComponent(minute),
-                "title": title
+                "title": decodeURIComponent(title)
             },{
                 $inc: {"pv": 1}
             },function(err){
@@ -163,9 +163,9 @@ Post.edit = function(username, minute, title, callback){
         return callback(err);
       }
       collection.findOne({
-        "username": username,
+        "username": decodeURIComponent(username),
         "time.minute": decodeURIComponent(minute),
-        "title": title
+        "title": decodeURIComponent(title)
       },function(err, doc){
         mongodb.close();
         if(err){
@@ -189,9 +189,9 @@ Post.update = function(username, minute, title, post, callback){
         return callback(err);
       }
       collection.update({
-        "username": username,
+        "username": decodeURIComponent(username),
         "time.minute": decodeURIComponent(minute),
-        "title":    title
+        "title":    decodeURIComponent(title)
       },{
         $set: {post: post}
       }, function(err){
@@ -217,9 +217,9 @@ Post.remove = function(username, minute, title, callback){
         return callback(err);
       }
       collection.findOne({
-          "username": username,
+          "username": decodeURIComponent(username),
           "time.minute":decodeURIComponent(minute),
-          "title":    title
+          "title":    decodeURIComponent(title)
       }, function(err, doc){
           if(err){
               mongodb.close();
@@ -231,15 +231,15 @@ Post.remove = function(username, minute, title, callback){
           }
           if(reprint_from !=""){
               collection.update({
-                  "username": reprint_from.username,
-                  "time.day": reprint_from.day,
-                  "title":    reprint_from.title
+                  "username": decodeURIComponent(reprint_from.username),
+                  "time.minute": decodeURIComponent(reprint_from.minute),
+                  "title":    decodeURIComponent(reprint_from.title)
               },{
                   $pull: {
                       "reprint_info.reprint_to": {
-                          "username": username,
-                          "day":      day,
-                          "title":    title
+                          "username": decodeURIComponent(username),
+                          "minute":      decodeURIComponent(day),
+                          "title":    decodeURIComponent(title)
                       }
                   }
               }, function(err){
@@ -251,9 +251,9 @@ Post.remove = function(username, minute, title, callback){
           }
       });
       collection.remove({
-        "username": username,
-        "time.day": day,
-        "title":    title
+        "username": decodeURIComponent(username),
+        "time.minute": decodeURIComponent(minute),
+        "title":    decodeURIComponent(title)
       },{
         w: 1
       },function(err){
@@ -404,9 +404,9 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
       }
       //找到被转载的文章的原文档
       collection.findOne({
-        "username": reprint_from.username,
-        "time.day": reprint_from.day,
-        "title": reprint_from.title
+        "username": decodeURIComponent(reprint_from.username),
+        "time.minute": decodeURIComponent(reprint_from.minute),
+        "title": decodeURIComponent(reprint_from.title)
       }, function (err, doc) {
         if (err) {
           mongodb.close();
@@ -425,25 +425,25 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
 
         delete doc._id;
 
-        doc.username = reprint_to.username;
+        doc.username = decodeURIComponent(reprint_to.username);
         doc.head = reprint_to.head;
         doc.time = time;
-        doc.title = (doc.title.search(/[转载]/) > -1) ? doc.title : "[转载]" + doc.title;
+        doc.title = (doc.title.search(/[转载]/) > -1) ? decodeURIComponent(doc.title) : "[转载]" + decodeURIComponent(doc.title);
         doc.comments = [];
-        doc.reprint_info = {"reprint_from": reprint_from};
+        doc.reprint_info = {"reprint_from": decodeURIComponent(reprint_from)};
         doc.pv = 0;
 
         //更新被转载的原文档的 reprint_info 内的 reprint_to
         collection.update({
-          "username": reprint_from.username,
-          "time.day": reprint_from.day,
-          "title": reprint_from.title
+          "username": decodeURIComponent(reprint_from.username),
+          "time.minute": decodeURIComponent(reprint_from.minute),
+          "title": decodeURIComponent(reprint_from.title)
         }, {
           $push: {
             "reprint_info.reprint_to": {
-              "username": doc.username,
-              "day": time.day,
-              "title": doc.title
+              "username": decodeURIComponent(doc.username),
+              "minute": decodeURIComponent(time.minute),
+              "title": decodeURIComponent(doc.title)
           }}
         }, function (err) {
           if (err) {

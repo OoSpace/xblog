@@ -2,14 +2,14 @@
 <% posts.forEach(function(post){  %>
 <p>
 	<h2>
-		<a href="/blog/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>"><%= post.title %></a>
+		<a href="/blog/<%= encodeURIComponent(post.username) %>/<%= encodeURIComponent(post.time.minute) %>/<%= encodeURIComponent(post.title) %>"><%= post.title %></a>
 	</h2>
-	<a href="/blog/<%= post.username %>">
+	<a href="/blog/<%= encodeURIComponent(post.username) %>">
 		<img src="<%= post.head %>" class="r_head" />
 	</a>
 </p>
 <p class="info">
-	作者：<a href="blog/<%= post.username %>"><%= post.username %></a> |
+	作者：<a href="blog/<%= encodeURIComponent(post.username) %>"><%= post.username %></a> |
 	日期：<%= post.time.minute %> |
 	标签：
 	<% post.tags.forEach(function(tag){ %>
@@ -18,7 +18,7 @@
 		<% } %>
 	<% }) %>
 	<% if (post.reprint_info.reprint_from) { %>
-	  <br><a href="/blog/<%= post.reprint_info.reprint_from.username %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a>
+	  <br><a href="/blog/<%= encodeURIComponent(post.reprint_info.reprint_from.username) %>/<%= encodeURIComponent(post.reprint_info.reprint_from.day) %>/<%= encodeURIComponent(post.reprint_info.reprint_from.title) %>">原文链接</a>
 	<% } %>
 </p>
 <%- post.post %>

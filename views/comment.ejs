@@ -10,7 +10,7 @@
        </div>
     <% }) %>
 <% } %>
-<form method="post" action="/blog/<%= post.username %>/<%= post.time.day %>/<%= post.title %>">
+<form method="post" action="/blog/<%= encodeURIComponent(post.username) %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>">
    <% if(user) { %>
    姓名： <input style="border: none;" readonly="readonly" type="text" name="username" value="<%= user.username %>" /><br />
    邮箱： <input style="border: none;" readonly="readonly" type="text" name="email" value="<%= user.email %>" /><br />

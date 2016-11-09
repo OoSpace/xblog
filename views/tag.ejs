@@ -6,7 +6,7 @@
     <li><h3><%= post.time.year %></h3></li>
   <% lastYear = post.time.year } %>
     <li><time><%= post.time.day %></time></li>
-    <li><a href="/blog/<%= post.username %>/<%= encodeURIComponent(post.time.minute) %>/<%= post.title %>"><%= post.title %></a></li>
+    <li><a href="/blog/<%= encodeURIComponent(post.username) %>/<%= encodeURIComponent(post.time.minute) %>/<%= encodeURIComponent(post.title) %>"><%= post.title %></a></li>
 <% }) %>
 </ul>
 <% include common/footer.ejs %>

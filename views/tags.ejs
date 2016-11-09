@@ -1,5 +1,5 @@
 <% include common/header.ejs %>
 <% posts.forEach(function(tag){ %>
-    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+    <a class="tag" href="/tags/<%= encodeURIComponent(tag) %>"><%= tag %></a>
 <% }) %>
 <% include common/footer.ejs %>
