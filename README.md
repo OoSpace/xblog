@@ -8,3 +8,7 @@ xblog 在nodejs实战源码N-blog修改版kirinblog的基础上进行修改的�
 
 欢迎加QQ群：337323051 一起讨论
 
+启动准备： npm install
+数据库配置与启动 ：settings.js设置帐号密码  启动mongodb： mongod --dbpath  dbPath\dbname
+启动： supervisor start
+
