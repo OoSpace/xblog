@@ -23,7 +23,7 @@ var errorHandler   = require('errorhandler');
 var server         = http.Server( app );
 
 // view engine setup
-app.set( 'port', process.env.PORT || 5678 ); //服务启动端口
+app.set( 'port', process.env.PORT || 80 ); //服务启动端口
 //定义ejs模板引擎和模板文件位置
 app.set( 'views', __dirname + '/views' );
 app.set( 'view engine', 'ejs' );
