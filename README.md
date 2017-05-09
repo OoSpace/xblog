@@ -12,3 +12,4 @@ xblog 在nodejs实战源码N-blog修改版kirinblog的基础上进行修改的�
 数据库配置与启动 ：settings.js设置帐号密码  启动mongodb： mongod --dbpath  dbPath\dbname
 启动： supervisor start
 
+示例：oospace.com
