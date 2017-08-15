@@ -10,6 +10,9 @@ xblog 在nodejs实战源码N-blog修改版kirinblog的基础上进行修改的�
 
 启动准备： npm install
 数据库配置与启动 ：settings.js设置帐号密码  启动mongodb： mongod --dbpath  dbPath\dbname
-启动： supervisor start
+
+本地调试注意修改start.js中的port端口，默认为80可以修改为3000 
+
+启动： supervisor start  然后访问浏览器 http://localhost:3000/#/
 
 示例：oospace.com
